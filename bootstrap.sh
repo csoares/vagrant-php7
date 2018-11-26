@@ -12,7 +12,7 @@ sudo debconf-set-selections <<< "mysql-server mysql-server/root_password passwor
 sudo debconf-set-selections <<< "mysql-server mysql-server/root_password_again password root"
 
 echo "-- Install tools and helpers --"
-sudo apt-get install -y --force-yes python-software-properties vim htop curl git npm
+sudo apt-get install -y --force-yes python-software-properties vim htop curl git npm software-properties-common
 
 echo "-- Install PPA's --"
 sudo add-apt-repository ppa:ondrej/php
@@ -20,16 +20,17 @@ sudo add-apt-repository ppa:chris-lea/redis-server
 Update
 
 echo "-- Install NodeJS --"
-curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 
 echo "-- Install packages --"
 sudo apt-get install -y --force-yes apache2 mysql-server-5.6 git-core nodejs rabbitmq-server redis-server
-sudo apt-get install -y --force-yes php7.0-common php7.0-dev php7.0-json php7.0-opcache php7.0-cli libapache2-mod-php7.0 php7.0 php7.0-mysql php7.0-fpm php7.0-curl php7.0-gd php7.0-mcrypt php7.0-mbstring php7.0-bcmath php7.0-zip
+sudo apt-get install -y --force-yes php7.2 php-pear php7.2-curl php7.2-dev php7.2-gd php7.2-mbstring php7.2-zip php7.2-mysql php7.2-xml
+
 Update
 
 echo "-- Configure PHP &Apache --"
-sed -i "s/error_reporting = .*/error_reporting = E_ALL/" /etc/php/7.0/apache2/php.ini
-sed -i "s/display_errors = .*/display_errors = On/" /etc/php/7.0/apache2/php.ini
+sed -i "s/error_reporting = .*/error_reporting = E_ALL/" /etc/php/7.2/apache2/php.ini
+sed -i "s/display_errors = .*/display_errors = On/" /etc/php/7.2/apache2/php.ini
 sudo a2enmod rewrite
 
 echo "-- Creating virtual hosts --"
@@ -69,15 +70,6 @@ echo "-- Setup databases --"
 mysql -uroot -proot -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'root' WITH GRANT OPTION; FLUSH PRIVILEGES;"
 mysql -uroot -proot -e "CREATE DATABASE IF NOT EXISTS my_database";
 
-echo "-- Install PHPUnit --"
-wget https://phar.phpunit.de/phpunit-7.0.0.phar
-mv phpunit-7.0.0.phar phpunit.phar
-chmod +x phpunit.phar
-sudo mv phpunit.phar /usr/local/bin/phpunit
-phpunit --version
 
-apt-get install -y php7.0-xml  php-soap 
-apt-get dist-upgrade -y
-apt-get autoremove -y
 
 echo "cd /var/www/app" >> /home/vagrant/.bashrc
