@@ -23,7 +23,7 @@ echo "-- Install NodeJS --"
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 
 echo "-- Install packages --"
-sudo apt-get install -y --force-yes apache2 mysql-server-5.6 git-core nodejs rabbitmq-server redis-server
+sudo apt-get install -y --force-yes apache2 mysql-server-5.7 git-core nodejs rabbitmq-server redis-server
 sudo apt-get install -y --force-yes php php-pear php-curl php-dev php-gd php-mbstring php-zip php-mysql php-xml
 
 Update
