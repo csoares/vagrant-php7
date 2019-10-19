@@ -24,7 +24,7 @@ curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 
 echo "-- Install packages --"
 sudo apt-get install -y --force-yes apache2 mysql-server-5.6 git-core nodejs rabbitmq-server redis-server
-sudo apt-get install -y --force-yes php7.2 php-pear php7.2-curl php7.2-dev php7.2-gd php7.2-mbstring php7.2-zip php7.2-mysql php7.2-xml
+sudo apt-get install -y --force-yes php php-pear php-curl php-dev php-gd php-mbstring php-zip php-mysql php-xml
 
 Update
 
