@@ -1,4 +1,4 @@
-# Vagrant PHP7.2 
+# Vagrant PHP7
 
 A simple Vagrant LAMP setup running PHP7.
 
@@ -7,7 +7,7 @@ A simple Vagrant LAMP setup running PHP7.
 - Ubuntu 14.04.3 LTS (Trusty Tahr)
 - Vim, Git, Curl, etc.
 - Apache
-- PHP7.2 with some extensions
+- PHP7 with some extensions
 - MySQL 5.6
 - Node.js with NPM
 - RabbitMQ
