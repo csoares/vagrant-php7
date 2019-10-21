@@ -8,9 +8,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.box = "ubuntu/bionic64"
 
     # Mount shared folder using NFS
-    config.vm.synced_folder ".", "/vagrant",
-        create: true, group:'vagrant'
-
+    config.vm.synced_folder ".", "/vagrant"
 
     # Do some network configuration
     config.vm.network "private_network", ip: "192.168.100.100"
